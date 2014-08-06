@@ -1,4 +1,5 @@
 <?php
+namespace Molfarius\myreposytory;
   class House {
     
 public $rooms;

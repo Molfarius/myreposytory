@@ -1,5 +1,5 @@
 <?php
-namespace Molfarius\myreposytory
+
   class Street {
     
 public $rooms;

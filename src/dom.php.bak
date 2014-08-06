@@ -1,6 +1,5 @@
 <?php
-namespace Molfarius\myreposytory
-  class Street {
+  class House {
     
 public $rooms;
 public $square;
@@ -10,11 +9,7 @@ public $floor;
 public $porche;
 public $appartment;
 public $housesquare;
-public $namestreet;
-public $lenght;
-public $first;
-public $last;
-public $housenumbers;
+
 
 const teplo=14.95;
 const svet=2.35;
@@ -25,7 +20,7 @@ const gaz=15.35;
 const tbo=1.45;
  const AT = 11.31; // на 1 квартиру - 1 человек  (S двор.територии = 3,9 кв.м/человека х 2,9)
 
-public function __construct( $rooms, $square, $people, $numberhouse, $floor, $porche, $appartment, $housesquare, $namestreet,$lenght, $first,$last,$housenumbers)
+public function __construct( $rooms, $square, $people, $numberhouse, $floor, $porche, $appartment, $housesquare)
  {     
  $this->rooms = $rooms;
  $this->square = $square;
@@ -35,12 +30,6 @@ public function __construct( $rooms, $square, $people, $numberhouse, $floor, $po
  $this->porche = $porche;
  $this->appartment = $appartment;
  $this->housesquare = $housesquare;
- $this->namestreet = $namestreet;
- $this->lenght = $lenght;
- $this->first = $first;
- $this->last = $last;
- $this->housenumbers = $housenumbers;
-
     }
 
 public function teplo(){
@@ -76,28 +65,13 @@ public function alltaxes(){
 public function taxessquare(){
     return ($this->square *$this->floor*$this->porche*$this->appartment*self::AT);
 }
-    
-    public function squrehouse () {
-       return( $this->floor*$this->porche*$this->appartment);
-}
-     
-    public function allforregion()
-    {
-         return ($this->alltaxes()*$this->lenght);
     }
-    public function dvornik()
-    {
-        return(ceil(($this->lenght)/$this->squrehouse()));
-}
-    }
-    $aMember = new Street( $rooms=rand(0, 3),  $square=rand(21, 36), $people=rand(2, 6),$floor=rand(2,18), $porche=rand(1,9),$appartment=rand(2,4),$numberhouse=rand(1,250),$housesquare=rand(45,72), $_POST['namestreet'], $_POST['lenght'], $_POST['first'], $_POST['last'], $_POST['housenumbers']);
     
-    echo "<p>Протяжённость улицы :</p>";
-    echo $aMember->numberhouse() ;
-    echo "<p>Ваш счёт коммунальных платежей за всю улицу  :</p>";
-    echo $aMember->allforregion();
-    echo "<p>Кол-во дворников необходимо:</p>";
-    echo $aMember->dvornik();
+    $aMember = new House( $rooms=rand(0, 3),  $square=rand(21, 36), $people=rand(2, 6), $_POST['floor'], $_POST['porche'],$_POST['appartment'],$_POST['numberhouse'],$_POST['housesquare']);
+    echo "<p>Номер Вашего дома :</p>";
+     echo $aMember->numberhouse() ;
+echo "<p>Ваш счёт коммунальных платежей за весь дом  :</p>";
+    echo $aMember->alltaxes();
+    echo "<p>Ваш налог на землю составляет  :</p>";
+    echo $aMember->taxessquare();
 ?>
-
-
