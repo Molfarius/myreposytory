@@ -1,0 +1,67 @@
+<?php
+// Создаем новый класс Coor:
+class Member {
+    
+public $rooms;
+public $square;
+public $people;
+
+const teplo=14.95;
+const svet=2.35;
+const hotwater = 6.98;
+const coldwater= 3.45;
+const canalization= 6.34;
+const gaz=15.35;
+const tbo=1.45;
+
+public function __construct( $rooms, $square, $people )
+ {     
+ $this->rooms = $rooms;
+ $this->square = $square;
+ $this->people = $people;
+    }
+
+public function teplo(){
+return $this-> square * self::teplo;
+}
+public function svet(){
+return $this-> square * self::svet;
+}
+public function hotwater(){
+return $this-> people * self::hotwater;
+}
+public function coldwater(){
+return $this-> people * self::coldwater;
+}
+public function canalization(){
+return $this-> people * self::canalization;
+}
+public function gaz(){
+return $this-> rooms * self::gaz;
+}
+public function tbo(){
+return $this-> rooms * self::tbo;
+}
+
+    }
+    
+    $aMember = new Member($_POST['rooms'], $_POST['square'], $_POST['people']);
+ echo "<p>Площадь вашей квартиры : {$aMember->square}  м^2</p>";
+  echo "<p>Кол-во людей которое проживает : {$aMember->people} </p>";
+   echo "<p>Кол-во комнат в квартире : {$aMember->rooms}</p>";
+    echo "<p>Ваш счёт за отопление :</p>";
+    echo "<p>   {$aMember->teplo()}</p>";
+     echo "<p>Ваш счёт за свет :</p>";
+    echo $aMember->svet();
+     echo "<p>Ваш счёт за горячую воду :</p>";
+    echo $aMember->hotwater();
+     echo "<p>Ваш счёт за холодную воду :</p>";
+    echo $aMember->coldwater();
+     echo "<p>Ваш счёт за канализацию :</p>";
+    echo $aMember->canalization();
+     echo "<p>Ваш счёт за газ :</p>";
+    echo $aMember->gaz();
+     echo "<p>Ваш счёт за ТБО :</p>";
+    echo $aMember->tbo();
+
+?>
